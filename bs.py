@@ -34,6 +34,3 @@ def loop_binary_search(rows: list, target: int) -> int:
 
         if not rows[start:end]:
             return EMPTY_VALUE
-
-
-binary_search = loop_binary_search
