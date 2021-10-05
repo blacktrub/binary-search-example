@@ -1,4 +1,5 @@
-from bs import binary_search, EMPTY_VALUE
+from bs import EMPTY_VALUE
+from bs import binary_search
 
 
 def test_empty_binary_search():

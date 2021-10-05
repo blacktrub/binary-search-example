@@ -1,7 +1,7 @@
 EMPTY_VALUE = -1
 
 
-def binary_search(rows: list, target: int) -> int:
+def recursive_binary_search(rows: list, target: int) -> int:
     if not rows:
         return EMPTY_VALUE
 
@@ -11,6 +11,29 @@ def binary_search(rows: list, target: int) -> int:
         return middle
 
     if middle_val > target:
-        return binary_search(rows[:middle], target)
+        return recursive_binary_search(rows[:middle], target)
     else:
-        return binary_search(rows[middle + 1:], target) + middle + 1
+        return recursive_binary_search(rows[middle + 1:], target) + middle + 1
+
+
+def loop_binary_search(rows: list, target: int) -> int:
+    if not rows:
+        return EMPTY_VALUE
+
+    start, end = 0, len(rows)
+    while True:
+        middle = (end - start) // 2 + start
+        middle_val = rows[middle]
+        if middle_val == target:
+            return middle
+
+        if middle_val > target:
+            end = middle
+        else:
+            start = middle + 1
+
+        if not rows[start:end]:
+            return EMPTY_VALUE
+
+
+binary_search = loop_binary_search
